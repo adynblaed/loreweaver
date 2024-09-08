@@ -1,0 +1,11 @@
+CharacterVoice:
+  __description__: "Represents the unique voice and dialogue style of a character.\n\
+    \nAttributes:\n    speech_patterns (List[str]): Common speech patterns or phrases.\n\
+    \    tone (str): Overall tone of the character's speech.\n    vocabulary (List[str]):\
+    \ Unique or characteristic words used by the character."
+  speech_patterns: <list>
+  speech_patterns__description__: Common speech patterns or phrases
+  tone: <str>
+  tone__description__: Overall tone of the character's speech
+  vocabulary: <list>
+  vocabulary__description__: Unique or characteristic words used by the character

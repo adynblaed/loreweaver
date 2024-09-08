@@ -1,0 +1,486 @@
+VersionControl:
+  version_id: <uuid4>
+  parent_version: <Optional[<ast.Attribute object at 0x10ff93110>]>
+  timestamp: <utcnow>
+  changes: {}
+  author: <str>
+VersionedEntityMixin:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+LocalizedString:
+  default: <str>
+  translations: <dict>
+Tag:
+  category: <str>
+  value: <str>
+BaseEntity:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+RelationshipDynamic:
+  trust: <float>
+  loyalty: <float>
+  familiarity: <float>
+  tension: <float>
+  shared_history: <list>
+Relationship:
+  source_id: <<ast.Attribute object at 0x10ffb55d0>>
+  target_id: <<ast.Attribute object at 0x10ffb50d0>>
+  relationship_type: <str>
+  dynamics: <RelationshipDynamic>
+  notes: <Optional[LocalizedString]>
+Alignment: {}
+Rarity: {}
+EventType: {}
+Locale: {}
+CharacterRace:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  traits: <list>
+  ability_bonuses: <dict>
+CharacterClass:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  primary_ability: <str>
+  saving_throw_proficiencies: <list>
+  skill_proficiencies: <list>
+CharacterBackground:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  skill_proficiencies: <list>
+  feature: <LocalizedString>
+AbilityScore:
+  score: <int>
+  modifier: <int>
+CharacterAbilityScores:
+  strength: <AbilityScore>
+  dexterity: <AbilityScore>
+  constitution: <AbilityScore>
+  intelligence: <AbilityScore>
+  wisdom: <AbilityScore>
+  charisma: <AbilityScore>
+CharacterSkill:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  ability: <str>
+  proficient: <bool>
+  expertise: <bool>
+CharacterTrait:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  impact: <LocalizedString>
+CharacterVoice:
+  speech_patterns: <list>
+  tone: <str>
+  vocabulary: <list>
+CharacterArc:
+  starting_state: <LocalizedString>
+  key_events: <list>
+  ending_state: <LocalizedString>
+CharacterSheet:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  race: <CharacterRace>
+  character_class: <CharacterClass>
+  background: <CharacterBackground>
+  level: <int>
+  experience: <int>
+  alignment: <Alignment>
+  ability_scores: <CharacterAbilityScores>
+  skills: <list>
+  traits: <list>
+  inventory: <list>
+  relationships: <list>
+  backstory: <LocalizedString>
+  voice: <CharacterVoice>
+  character_arc: <CharacterArc>
+  notes: <LocalizedString>
+ItemEvolution:
+  stages: []
+  current_stage: <int>
+  evolution_trigger: <Optional[str]>
+ItemCraftingRecipe:
+  ingredients: []
+  tools: <list>
+  skill_requirements: <dict>
+  crafting_time: <int>
+  difficulty: <int>
+Item:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  rarity: <Rarity>
+  weight: <float>
+  value: <int>
+  evolution: <Optional[ItemEvolution]>
+  crafting_recipe: <Optional[ItemCraftingRecipe]>
+ClimateModel:
+  temperature_range: {}
+  precipitation: {}
+  wind_patterns: {}
+  natural_disasters: <list>
+LocationHistory:
+  key_events: <list>
+  previous_names: <list>
+  major_changes: <list>
+Location:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  type: <str>
+  parent_location: <Optional[<ast.Attribute object at 0x10fffe810>]>
+  sub_locations: <list>
+  inhabitants: <list>
+  points_of_interest: <list>
+  government_type: <Optional[str]>
+  wealth: <Optional[int]>
+  climate: <ClimateModel>
+  history: <LocationHistory>
+FactionRank:
+  name: <LocalizedString>
+  level: <int>
+  responsibilities: <list>
+  privileges: <list>
+FactionHierarchy:
+  ranks: []
+  leadership_structure: <LocalizedString>
+FactionDiplomacy:
+  allies: <list>
+  enemies: <list>
+  neutral: <list>
+  trade_agreements: <list>
+Faction:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  leader: <<ast.Attribute object at 0x110011cd0>>
+  members: <list>
+  goals: <list>
+  resources: <list>
+  hierarchy: <FactionHierarchy>
+  diplomacy: <FactionDiplomacy>
+EventImpact:
+  affected_characters: <list>
+  affected_locations: <list>
+  affected_factions: <list>
+  world_changes: <list>
+Event:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  event_type: <EventType>
+  date: <datetime>
+  location: <<ast.Attribute object at 0x110022d90>>
+  participants: <list>
+  consequences: <list>
+  related_items: <list>
+  impact: <EventImpact>
+EventChain:
+  events: []
+  causality: <list>
+WorldSheet:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  locations: <list>
+  factions: <list>
+  events: <list>
+  characters: <list>
+  items: <list>
+  lore: <LocalizedString>
+  notes: <LocalizedString>
+TimelineEvent:
+  event_id: <<ast.Attribute object at 0x110034b10>>
+  timestamp: <datetime>
+  significance: <LocalizedString>
+TimelineNode:
+  event_id: <<ast.Attribute object at 0x110035c50>>
+  timestamp: <datetime>
+  next_nodes: <list>
+  previous_nodes: <list>
+  branch_probability: <float>
+Timeline:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  nodes: <list>
+  active_branch: <<ast.Attribute object at 0x1100442d0>>
+  convergence_points: <list>
+UniverseSheet:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  dimensions: <list>
+  timelines: <list>
+  cosmic_entities: <list>
+  universal_laws: <list>
+  notes: <LocalizedString>
+Rule:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  mechanics: <dict>
+  applicability: <list>
+  exceptions: <list>
+Scenario:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  location: <<ast.Attribute object at 0x11004ccd0>>
+  characters: <list>
+  objectives: <list>
+  challenges: <list>
+  outcomes: <list>
+SimulationParameter:
+  name: <str>
+  value: <Union[<ast.Tuple object at 0x11004f310>]>
+  description: <LocalizedString>
+  range: <Optional[Dict[<ast.Tuple object at 0x11005c090>]]>
+WorldSimulation:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  world_id: <<ast.Attribute object at 0x11005cbd0>>
+  active_scenarios: <list>
+  simulation_parameters: <list>
+  current_state: <dict>
+  history: <list>
+SimulationSheet:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  rules: <list>
+  scenarios: <list>
+  active_characters: <list>
+  current_world: <<ast.Attribute object at 0x110064410>>
+  world_simulation: <WorldSimulation>
+  game_master_notes: <LocalizedString>
+Memories:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  memory_string: <LocalizedString>
+  associated_entity_id: <<ast.Attribute object at 0x110065a90>>
+  event_id: <Optional[<ast.Attribute object at 0x110066090>]>
+  location_id: <Optional[<ast.Attribute object at 0x110066690>]>
+  emotional_impact: <int>
+  recall_difficulty: <int>
+Config: {}

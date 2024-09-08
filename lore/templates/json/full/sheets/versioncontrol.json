@@ -1,0 +1,15 @@
+{
+  "VersionControl": {
+    "__description__": "Model to track version history and branching of an entity for rollback and alternate timeline support.\n\nAttributes:\n    version_id (UUID): Unique identifier for this version.\n    parent_version (Optional[UUID]): UUID of the parent version (for branching).\n    timestamp (datetime): Timestamp when this version was created.\n    changes (Dict[str, Any]): Dictionary of changes made in this version.\n    author (str): Author responsible for changes.",
+    "version_id": "<uuid4>",
+    "version_id__description__": "Unique identifier for this version",
+    "parent_version": "<Optional[<ast.Attribute object at 0x104842d10>]>",
+    "parent_version__description__": "UUID of the parent version (for branching)",
+    "timestamp": "<utcnow>",
+    "timestamp__description__": "Timestamp when this version was created",
+    "changes": {},
+    "changes__description__": "Dictionary of changes made in this version",
+    "author": "<str>",
+    "author__description__": "Author responsible for changes"
+  }
+}

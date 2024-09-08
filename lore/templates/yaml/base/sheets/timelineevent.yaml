@@ -1,0 +1,4 @@
+TimelineEvent:
+  event_id: <<ast.Attribute object at 0x110034b10>>
+  timestamp: <datetime>
+  significance: <LocalizedString>

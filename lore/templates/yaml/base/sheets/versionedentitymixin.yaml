@@ -1,0 +1,6 @@
+VersionedEntityMixin:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>

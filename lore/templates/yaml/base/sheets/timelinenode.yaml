@@ -1,0 +1,6 @@
+TimelineNode:
+  event_id: <<ast.Attribute object at 0x110035c50>>
+  timestamp: <datetime>
+  next_nodes: <list>
+  previous_nodes: <list>
+  branch_probability: <float>

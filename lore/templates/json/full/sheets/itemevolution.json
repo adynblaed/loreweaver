@@ -1,0 +1,11 @@
+{
+  "ItemEvolution": {
+    "__description__": "Represents the evolution of an item over time or through specific events.\n\nAttributes:\n    stages (List[Dict[str, Any]]): List of evolution stages with their properties.\n    current_stage (int): Index of the current evolution stage.\n    evolution_trigger (Optional[str]): Condition that triggers evolution to the next stage.",
+    "stages": [],
+    "stages__description__": "List of evolution stages with their properties",
+    "current_stage": "<int>",
+    "current_stage__description__": "Index of the current evolution stage",
+    "evolution_trigger": "<Optional[str]>",
+    "evolution_trigger__description__": "Condition that triggers evolution to the next stage"
+  }
+}

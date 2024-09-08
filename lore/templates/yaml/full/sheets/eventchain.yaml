@@ -1,0 +1,8 @@
+EventChain:
+  __description__: "Represents a chain of related events.\n\nAttributes:\n    events\
+    \ (List[UUID]): UUIDs of events in the chain, in chronological order.\n    causality\
+    \ (List[LocalizedString]): Descriptions of how each event led to the next."
+  events: []
+  events__description__: UUIDs of events in the chain, in chronological order
+  causality: <list>
+  causality__description__: Descriptions of how each event led to the next

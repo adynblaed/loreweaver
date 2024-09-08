@@ -1,0 +1,30 @@
+CharacterSheet:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  race: <CharacterRace>
+  character_class: <CharacterClass>
+  background: <CharacterBackground>
+  level: <int>
+  experience: <int>
+  alignment: <Alignment>
+  ability_scores: <CharacterAbilityScores>
+  skills: <list>
+  traits: <list>
+  inventory: <list>
+  relationships: <list>
+  backstory: <LocalizedString>
+  voice: <CharacterVoice>
+  character_arc: <CharacterArc>
+  notes: <LocalizedString>

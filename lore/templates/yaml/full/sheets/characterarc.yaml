@@ -1,0 +1,12 @@
+CharacterArc:
+  __description__: "Represents a character's development arc over time.\n\nAttributes:\n\
+    \    starting_state (LocalizedString): Initial state or personality of the character.\n\
+    \    key_events (List[UUID]): UUIDs of events crucial to character development.\n\
+    \    ending_state (LocalizedString): Final or current state of the character's\
+    \ development."
+  starting_state: <LocalizedString>
+  starting_state__description__: Initial state or personality of the character
+  key_events: <list>
+  key_events__description__: UUIDs of events crucial to character development
+  ending_state: <LocalizedString>
+  ending_state__description__: Final or current state of the character's development

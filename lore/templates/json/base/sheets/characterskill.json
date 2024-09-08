@@ -1,0 +1,21 @@
+{
+  "CharacterSkill": {
+    "version": "<int>",
+    "created_at": "<utcnow>",
+    "updated_at": "<utcnow>",
+    "change_log": "<list>",
+    "version_history": "<list>",
+    "uuid": "<uuid4>",
+    "system_name": "<Union[<ast.Tuple object at 0x10482bdd0>]>",
+    "canonical_name": "<<ast.Constant object at 0x10482b810>>",
+    "description": "<Optional[<ast.Constant object at 0x10482a710>]>",
+    "timeline": "<Optional[Union[<ast.Tuple object at 0x10482a090>]]>",
+    "system_timestamp": "<Optional[datetime]>",
+    "canonical_timestamp": "<Optional[Union[<ast.Tuple object at 0x104829350>]]>",
+    "metadata": "<dict>",
+    "tags": "<list>",
+    "ability": "<str>",
+    "proficient": "<bool>",
+    "expertise": "<bool>"
+  }
+}

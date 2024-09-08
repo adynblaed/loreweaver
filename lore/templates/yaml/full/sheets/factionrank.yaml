@@ -1,0 +1,14 @@
+FactionRank:
+  __description__: "Represents a rank within a faction's hierarchy.\n\nAttributes:\n\
+    \    name (LocalizedString): Name of the rank.\n    level (int): Numeric level\
+    \ of the rank within the hierarchy.\n    responsibilities (List[LocalizedString]):\
+    \ Responsibilities associated with the rank.\n    privileges (List[LocalizedString]):\
+    \ Privileges granted to members of this rank."
+  name: <LocalizedString>
+  name__description__: Name of the rank
+  level: <int>
+  level__description__: Numeric level of the rank within the hierarchy
+  responsibilities: <list>
+  responsibilities__description__: Responsibilities associated with the rank
+  privileges: <list>
+  privileges__description__: Privileges granted to members of this rank

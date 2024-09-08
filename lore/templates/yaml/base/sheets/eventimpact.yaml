@@ -1,0 +1,5 @@
+EventImpact:
+  affected_characters: <list>
+  affected_locations: <list>
+  affected_factions: <list>
+  world_changes: <list>

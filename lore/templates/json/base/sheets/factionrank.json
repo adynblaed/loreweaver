@@ -1,0 +1,8 @@
+{
+  "FactionRank": {
+    "name": "<LocalizedString>",
+    "level": "<int>",
+    "responsibilities": "<list>",
+    "privileges": "<list>"
+  }
+}

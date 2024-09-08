@@ -1,0 +1,19 @@
+EventImpact:
+  __description__: "Represents the impact of an event on various entities in the world.\n\
+    \nAttributes:\n    affected_characters (List[Dict[UUID, str]]): UUIDs of affected\
+    \ characters and descriptions of effects.\n    affected_locations (List[Dict[UUID,\
+    \ str]]): UUIDs of affected locations and descriptions of effects.\n    affected_factions\
+    \ (List[Dict[UUID, str]]): UUIDs of affected factions and descriptions of effects.\n\
+    \    world_changes (List[LocalizedString]): General changes to the world as a\
+    \ result of the event."
+  affected_characters: <list>
+  affected_characters__description__: UUIDs of affected characters and descriptions
+    of effects
+  affected_locations: <list>
+  affected_locations__description__: UUIDs of affected locations and descriptions
+    of effects
+  affected_factions: <list>
+  affected_factions__description__: UUIDs of affected factions and descriptions of
+    effects
+  world_changes: <list>
+  world_changes__description__: General changes to the world as a result of the event

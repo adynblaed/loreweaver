@@ -1,0 +1,6 @@
+{
+  "AbilityScore": {
+    "score": "<int>",
+    "modifier": "<int>"
+  }
+}

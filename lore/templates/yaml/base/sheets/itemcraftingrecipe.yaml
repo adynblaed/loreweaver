@@ -1,0 +1,6 @@
+ItemCraftingRecipe:
+  ingredients: []
+  tools: <list>
+  skill_requirements: <dict>
+  crafting_time: <int>
+  difficulty: <int>

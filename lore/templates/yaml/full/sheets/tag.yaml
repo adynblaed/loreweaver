@@ -1,0 +1,7 @@
+Tag:
+  __description__: "Model for structured tagging system.\n\nAttributes:\n    category\
+    \ (str): Category of the tag.\n    value (str): Value of the tag."
+  category: <str>
+  category__description__: Category of the tag
+  value: <str>
+  value__description__: Value of the tag

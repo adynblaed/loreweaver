@@ -1,0 +1,14 @@
+ClimateModel:
+  __description__: "Represents the climate of a location.\n\nAttributes:\n    temperature_range\
+    \ (Dict[str, float]): Temperature range for different seasons.\n    precipitation\
+    \ (Dict[str, float]): Precipitation levels for different seasons.\n    wind_patterns\
+    \ (Dict[str, str]): Wind patterns for different seasons.\n    natural_disasters\
+    \ (List[str]): Possible natural disasters in the area."
+  temperature_range: {}
+  temperature_range__description__: Temperature range for different seasons
+  precipitation: {}
+  precipitation__description__: Precipitation levels for different seasons
+  wind_patterns: {}
+  wind_patterns__description__: Wind patterns for different seasons
+  natural_disasters: <list>
+  natural_disasters__description__: Possible natural disasters in the area

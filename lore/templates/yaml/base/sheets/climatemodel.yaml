@@ -1,0 +1,5 @@
+ClimateModel:
+  temperature_range: {}
+  precipitation: {}
+  wind_patterns: {}
+  natural_disasters: <list>

@@ -1,0 +1,9 @@
+FactionHierarchy:
+  __description__: "Represents the internal structure and ranks of a faction.\n\n\
+    Attributes:\n    ranks (List[FactionRank]): List of ranks within the faction.\n\
+    \    leadership_structure (LocalizedString): Description of how leadership is\
+    \ structured."
+  ranks: []
+  ranks__description__: List of ranks within the faction
+  leadership_structure: <LocalizedString>
+  leadership_structure__description__: Description of how leadership is structured

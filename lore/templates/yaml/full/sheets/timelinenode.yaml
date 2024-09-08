@@ -1,0 +1,17 @@
+TimelineNode:
+  __description__: "Represents a node in a branching timeline, allowing for complex\
+    \ narrative progression.\n\nAttributes:\n    event_id (UUID): UUID of the associated\
+    \ event.\n    timestamp (datetime): Timestamp for when this node occurs.\n   \
+    \ next_nodes (List[UUID]): UUIDs of potential future timeline nodes.\n    previous_nodes\
+    \ (List[UUID]): UUIDs of previous timeline nodes.\n    branch_probability (float):\
+    \ Likelihood of this branch being followed."
+  event_id: <<ast.Attribute object at 0x110035c50>>
+  event_id__description__: UUID of the associated event
+  timestamp: <datetime>
+  timestamp__description__: Timestamp for when this node occurs
+  next_nodes: <list>
+  next_nodes__description__: UUIDs of potential future timeline nodes
+  previous_nodes: <list>
+  previous_nodes__description__: UUIDs of previous timeline nodes
+  branch_probability: <float>
+  branch_probability__description__: Likelihood of this branch being followed

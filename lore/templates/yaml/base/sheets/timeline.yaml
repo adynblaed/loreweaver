@@ -1,0 +1,18 @@
+Timeline:
+  version: <int>
+  created_at: <utcnow>
+  updated_at: <utcnow>
+  change_log: <list>
+  version_history: <list>
+  uuid: <uuid4>
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  system_timestamp: <Optional[datetime]>
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  metadata: <dict>
+  tags: <list>
+  nodes: <list>
+  active_branch: <<ast.Attribute object at 0x1100442d0>>
+  convergence_points: <list>

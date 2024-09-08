@@ -1,0 +1,14 @@
+FactionDiplomacy:
+  __description__: "Represents diplomatic relations between factions.\n\nAttributes:\n\
+    \    allies (List[UUID]): UUIDs of allied factions.\n    enemies (List[UUID]):\
+    \ UUIDs of enemy factions.\n    neutral (List[UUID]): UUIDs of factions with neutral\
+    \ relations.\n    trade_agreements (List[UUID]): UUIDs of factions with trade\
+    \ agreements."
+  allies: <list>
+  allies__description__: UUIDs of allied factions
+  enemies: <list>
+  enemies__description__: UUIDs of enemy factions
+  neutral: <list>
+  neutral__description__: UUIDs of factions with neutral relations
+  trade_agreements: <list>
+  trade_agreements__description__: UUIDs of factions with trade agreements

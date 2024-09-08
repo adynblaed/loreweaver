@@ -1,0 +1,14 @@
+SimulationParameter:
+  __description__: "Represents a customizable parameter for world simulations.\n\n\
+    Attributes:\n    name (str): Name of the parameter.\n    value (Union[int, float,\
+    \ str, bool]): Current value of the parameter.\n    description (LocalizedString):\
+    \ Description of what this parameter affects.\n    range (Optional[Dict[str, Union[int,\
+    \ float]]]): Possible range of values for numeric parameters."
+  name: <str>
+  name__description__: Name of the parameter
+  value: <Union[<ast.Tuple object at 0x11004f310>]>
+  value__description__: Current value of the parameter
+  description: <LocalizedString>
+  description__description__: Description of what this parameter affects
+  range: <Optional[Dict[<ast.Tuple object at 0x11005c090>]]>
+  range__description__: Possible range of values for numeric parameters

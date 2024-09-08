@@ -1,0 +1,6 @@
+VersionControl:
+  version_id: <uuid4>
+  parent_version: <Optional[<ast.Attribute object at 0x10ff93110>]>
+  timestamp: <utcnow>
+  changes: {}
+  author: <str>

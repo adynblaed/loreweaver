@@ -1,0 +1,495 @@
+# StoryForge YAML Schema
+# Version: 1.0
+# Description: Comprehensive YAML schema for the StoryForge atomic narrative structures
+
+# Base Entity
+BaseEntity:
+  type: object
+  properties:
+    system_id:
+      type: [string, integer]
+      description: Systematic identifier for the entity
+    canonical_id:
+      type: [string, integer]
+      description: Lore-friendly identifier for the entity
+    name:
+      type: string
+      description: Name of the entity
+    description:
+      type: string
+      description: Description of the entity
+    tags:
+      type: array
+      items:
+        type: string
+      description: Tags for categorization and filtering
+    timeline:
+      type: [string, integer, "null"]
+      description: Timeline the entity is associated with
+    timestamp:
+      type: [string, integer, "null"]
+      description: Time of the entity's significance
+
+# Enumerations
+Alignment:
+  type: string
+  enum:
+    - Lawful Good
+    - Neutral Good
+    - Chaotic Good
+    - Lawful Neutral
+    - True Neutral
+    - Chaotic Neutral
+    - Lawful Evil
+    - Neutral Evil
+    - Chaotic Evil
+
+Rarity:
+  type: string
+  enum:
+    - Common
+    - Uncommon
+    - Rare
+    - Very Rare
+    - Legendary
+    - Unique
+
+EventType:
+  type: string
+  enum:
+    - Personal
+    - Historical
+    - Quest
+    - Combat
+    - Social
+    - Economic
+    - Natural
+    - Supernatural
+    - Cosmic
+
+# Character Models
+CharacterRace:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        traits:
+          type: array
+          items:
+            type: string
+          description: Racial traits or characteristics
+        ability_bonuses:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Ability score bonuses provided by the race
+
+CharacterClass:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        primary_ability:
+          type: string
+          description: Main ability associated with the class
+        saving_throw_proficiencies:
+          type: array
+          items:
+            type: string
+          description: Saving throw proficiencies granted by the class
+        skill_proficiencies:
+          type: array
+          items:
+            type: string
+          description: Skills that the class has proficiency in
+
+CharacterBackground:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        skill_proficiencies:
+          type: array
+          items:
+            type: string
+          description: Skills acquired based on background
+        feature:
+          type: string
+          description: Special feature or ability granted by the background
+
+AbilityScore:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        score:
+          type: integer
+          minimum: 1
+          maximum: 30
+          description: Base ability score between 1 and 30
+        modifier:
+          type: integer
+          description: Modifier derived from the ability score
+
+CharacterAbilityScores:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        strength:
+          $ref: '#/AbilityScore'
+        dexterity:
+          $ref: '#/AbilityScore'
+        constitution:
+          $ref: '#/AbilityScore'
+        intelligence:
+          $ref: '#/AbilityScore'
+        wisdom:
+          $ref: '#/AbilityScore'
+        charisma:
+          $ref: '#/AbilityScore'
+
+CharacterSkill:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        ability:
+          type: string
+          description: The ability score this skill is tied to
+        proficient:
+          type: boolean
+          description: Indicates if the character is proficient in the skill
+        expertise:
+          type: boolean
+          description: Indicates if the character has expertise in the skill
+
+CharacterTrait:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        impact:
+          type: string
+          description: The potential impact of the trait on gameplay or the narrative
+
+Item:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        rarity:
+          $ref: '#/Rarity'
+        weight:
+          type: number
+          minimum: 0
+          description: Weight of the item in arbitrary units
+        value:
+          type: integer
+          minimum: 0
+          description: Monetary or barter value of the item
+
+Relationship:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        type:
+          type: string
+          description: Type of relationship (e.g., Friend, Rival)
+        strength:
+          type: integer
+          minimum: -100
+          maximum: 100
+          description: Strength of the relationship on a scale of -100 to 100
+
+CharacterSheet:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        race:
+          $ref: '#/CharacterRace'
+        character_class:
+          $ref: '#/CharacterClass'
+        background:
+          $ref: '#/CharacterBackground'
+        level:
+          type: integer
+          minimum: 1
+          description: Character's level, starting at 1
+        experience:
+          type: integer
+          minimum: 0
+          description: Experience points accumulated by the character
+        alignment:
+          $ref: '#/Alignment'
+        ability_scores:
+          $ref: '#/CharacterAbilityScores'
+        skills:
+          type: array
+          items:
+            $ref: '#/CharacterSkill'
+          description: List of the character's skills
+        traits:
+          type: array
+          items:
+            $ref: '#/CharacterTrait'
+          description: List of character-specific traits
+        inventory:
+          type: array
+          items:
+            $ref: '#/Item'
+          description: Items currently held by the character
+        relationships:
+          type: array
+          items:
+            $ref: '#/Relationship'
+          description: Relationships with other characters
+        backstory:
+          type: string
+          description: The character's personal backstory
+        notes:
+          type: string
+          description: General notes or additional information
+
+# Location, Faction, and Event Models
+Location:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        type:
+          type: string
+          description: Type of location (e.g., City, Forest, Dungeon)
+        inhabitants:
+          type: array
+          items:
+            type: string
+          description: List of entities inhabiting this location
+        points_of_interest:
+          type: array
+          items:
+            type: string
+          description: Notable locations or landmarks within this area
+        government_type:
+          type: [string, "null"]
+          description: Type of government overseeing the location
+        wealth:
+          type: [integer, "null"]
+          minimum: 1
+          maximum: 10
+          description: Wealth level of the location, on a scale of 1-10
+        climate:
+          type: [string, "null"]
+          description: The general climate of the location
+
+Faction:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        leader:
+          type: string
+          description: ID of the entity that leads the faction
+        members:
+          type: array
+          items:
+            type: string
+          description: List of faction members
+        goals:
+          type: array
+          items:
+            type: string
+          description: Goals or objectives the faction strives for
+        resources:
+          type: array
+          items:
+            type: string
+          description: Resources or assets the faction controls
+
+Event:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        event_type:
+          $ref: '#/EventType'
+        date:
+          type: string
+          format: date-time
+          description: Date and time the event took place
+        location:
+          type: string
+          description: Location where the event occurred
+        participants:
+          type: array
+          items:
+            type: string
+          description: List of participants involved in the event
+        consequences:
+          type: array
+          items:
+            type: string
+          description: Consequences or outcomes of the event
+        related_items:
+          type: array
+          items:
+            type: string
+          description: Items involved in the event
+        lasting_effects:
+          type: string
+          description: Any long-lasting consequences of the event
+
+# World and Universe Models
+WorldSheet:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        locations:
+          type: array
+          items:
+            $ref: '#/Location'
+          description: List of all major locations in the world
+        factions:
+          type: array
+          items:
+            $ref: '#/Faction'
+          description: List of factions present in the world
+        events:
+          type: array
+          items:
+            $ref: '#/Event'
+          description: Major events that occurred within the world
+        characters:
+          type: array
+          items:
+            type: string
+          description: List of characters present in the world
+        items:
+          type: array
+          items:
+            type: string
+          description: List of notable items in the world
+        lore:
+          type: string
+          description: General lore or history of the world
+        notes:
+          type: string
+          description: Additional notes or general information
+
+UniverseSheet:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        dimensions:
+          type: array
+          items:
+            type: string
+          description: List of dimensions within the universe
+        timeline:
+          type: [string, integer, "null"]
+          description: Timeline the universe is associated with
+        cosmic_entities:
+          type: array
+          items:
+            type: string
+          description: Notable cosmic entities present in the universe
+        universal_laws:
+          type: array
+          items:
+            type: string
+          description: Universal laws governing physics or magic in the universe
+        notes:
+          type: string
+          description: Additional notes or information
+
+# Rule, Scenario, and Simulation Models
+Rule:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        mechanics:
+          type: object
+          additionalProperties:
+            type: [integer, string, boolean]
+          description: Key mechanics or parameters governed by the rule
+
+Scenario:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        location:
+          type: string
+          description: Location where the scenario takes place
+        characters:
+          type: array
+          items:
+            type: string
+          description: List of characters involved in the scenario
+        objectives:
+          type: array
+          items:
+            type: string
+          description: Goals or objectives for this scenario
+        challenges:
+          type: array
+          items:
+            type: string
+          description: Challenges or obstacles present in the scenario
+
+SimulationSheet:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        rules:
+          type: array
+          items:
+            $ref: '#/Rule'
+          description: Rules governing the simulation
+        scenarios:
+          type: array
+          items:
+            $ref: '#/Scenario'
+          description: Scenarios currently active within the simulation
+        active_characters:
+          type: array
+          items:
+            type: string
+          description: Characters currently engaged in the simulation
+        current_world:
+          type: string
+          description: The world where the current simulation is taking place
+        game_master_notes:
+          type: string
+          description: Additional notes or observations from the game master
+
+# Dynamic Memory Models
+Memories:
+  allOf:
+    - $ref: '#/BaseEntity'
+    - type: object
+      properties:
+        memory_string:
+          type: string
+          description: Detailed memory or experience to be associated with an entity
+        associated_entity_id:
+          type: string
+          description: ID of the entity that this memory belongs to
+        event_id:
+          type: [string, "null"]
+          description: Optionally associate the memory with an event
+        location_id:
+          type: [string, "null"]
+          description: Optionally associate the memory with a location
+        timeline:
+          type: [string, integer, "null"]
+          description: Timeline the memory is associated with
+        timestamp:
+          type: [string, integer, "null"]
+          description: Time of the memory's significance

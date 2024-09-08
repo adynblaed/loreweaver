@@ -1,0 +1,17 @@
+ItemCraftingRecipe:
+  __description__: "Represents a recipe for crafting an item.\n\nAttributes:\n   \
+    \ ingredients (List[Dict[UUID, int]]): List of required ingredient UUIDs and quantities.\n\
+    \    tools (List[UUID]): List of required tool UUIDs.\n    skill_requirements\
+    \ (Dict[str, int]): Required skills and their minimum levels.\n    crafting_time\
+    \ (int): Time required to craft the item in minutes.\n    difficulty (int): Difficulty\
+    \ of crafting on a scale of 1-100."
+  ingredients: []
+  ingredients__description__: List of required ingredient UUIDs and quantities
+  tools: <list>
+  tools__description__: List of required tool UUIDs
+  skill_requirements: <dict>
+  skill_requirements__description__: Required skills and their minimum levels
+  crafting_time: <int>
+  crafting_time__description__: Time required to craft the item in minutes
+  difficulty: <int>
+  difficulty__description__: Difficulty of crafting on a scale of 1-100

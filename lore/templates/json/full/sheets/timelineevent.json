@@ -1,0 +1,11 @@
+{
+  "TimelineEvent": {
+    "__description__": "Represents an event specifically tied to a point in the timeline.\n\nAttributes:\n    event_id (UUID): UUID of the associated event.\n    timestamp (datetime): Specific timestamp of the event in the timeline.\n    significance (LocalizedString): Description of the event's significance in the timeline.",
+    "event_id": "<<ast.Attribute object at 0x1048dc110>>",
+    "event_id__description__": "UUID of the associated event",
+    "timestamp": "<datetime>",
+    "timestamp__description__": "Specific timestamp of the event in the timeline",
+    "significance": "<LocalizedString>",
+    "significance__description__": "Description of the event's significance in the timeline"
+  }
+}

@@ -1,0 +1,17 @@
+RelationshipDynamic:
+  __description__: "Represents the dynamic state of a relationship, which evolves\
+    \ over time.\n\nAttributes:\n    trust (float): Trust level between entities.\n\
+    \    loyalty (float): Loyalty level between entities.\n    familiarity (float):\
+    \ Familiarity level between entities.\n    tension (float): Tension level between\
+    \ entities.\n    shared_history (List[UUID]): List of events shared between the\
+    \ two entities."
+  trust: <float>
+  trust__description__: Trust level between entities
+  loyalty: <float>
+  loyalty__description__: Loyalty level between entities
+  familiarity: <float>
+  familiarity__description__: Familiarity level between entities
+  tension: <float>
+  tension__description__: Tension between entities
+  shared_history: <list>
+  shared_history__description__: Event UUIDs that shape the relationship

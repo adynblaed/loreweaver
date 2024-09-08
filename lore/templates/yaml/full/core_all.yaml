@@ -1,0 +1,1254 @@
+VersionControl:
+  __description__: "Model to track version history and branching of an entity for\
+    \ rollback and alternate timeline support.\n\nAttributes:\n    version_id (UUID):\
+    \ Unique identifier for this version.\n    parent_version (Optional[UUID]): UUID\
+    \ of the parent version (for branching).\n    timestamp (datetime): Timestamp\
+    \ when this version was created.\n    changes (Dict[str, Any]): Dictionary of\
+    \ changes made in this version.\n    author (str): Author responsible for changes."
+  version_id: <uuid4>
+  version_id__description__: Unique identifier for this version
+  parent_version: <Optional[<ast.Attribute object at 0x10ff93110>]>
+  parent_version__description__: UUID of the parent version (for branching)
+  timestamp: <utcnow>
+  timestamp__description__: Timestamp when this version was created
+  changes: {}
+  changes__description__: Dictionary of changes made in this version
+  author: <str>
+  author__description__: Author responsible for changes
+VersionedEntityMixin:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+LocalizedString:
+  __description__: "Model for localized strings supporting multiple languages.\n\n\
+    Attributes:\n    default (str): Default language string.\n    translations (Dict[str,\
+    \ str]): Translations keyed by language code."
+  default: <str>
+  default__description__: Default language string
+  translations: <dict>
+  translations__description__: Translations keyed by language code
+Tag:
+  __description__: "Model for structured tagging system.\n\nAttributes:\n    category\
+    \ (str): Category of the tag.\n    value (str): Value of the tag."
+  category: <str>
+  category__description__: Category of the tag
+  value: <str>
+  value__description__: Value of the tag
+BaseEntity:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+RelationshipDynamic:
+  __description__: "Represents the dynamic state of a relationship, which evolves\
+    \ over time.\n\nAttributes:\n    trust (float): Trust level between entities.\n\
+    \    loyalty (float): Loyalty level between entities.\n    familiarity (float):\
+    \ Familiarity level between entities.\n    tension (float): Tension level between\
+    \ entities.\n    shared_history (List[UUID]): List of events shared between the\
+    \ two entities."
+  trust: <float>
+  trust__description__: Trust level between entities
+  loyalty: <float>
+  loyalty__description__: Loyalty level between entities
+  familiarity: <float>
+  familiarity__description__: Familiarity level between entities
+  tension: <float>
+  tension__description__: Tension between entities
+  shared_history: <list>
+  shared_history__description__: Event UUIDs that shape the relationship
+Relationship:
+  __description__: "Represents a relationship between two entities.\n\nAttributes:\n\
+    \    source_id (UUID): UUID of the source entity.\n    target_id (UUID): UUID\
+    \ of the target entity.\n    relationship_type (str): Type of relationship (e.g.,\
+    \ Ally, Rival, Family).\n    dynamics (RelationshipDynamic): Dynamic states of\
+    \ the relationship.\n    notes (LocalizedString): Additional notes on the relationship."
+  source_id: <<ast.Attribute object at 0x10ffb55d0>>
+  source_id__description__: UUID of the source entity
+  target_id: <<ast.Attribute object at 0x10ffb50d0>>
+  target_id__description__: UUID of the target entity
+  relationship_type: <str>
+  relationship_type__description__: Type of relationship (e.g., Ally, Rival, Family)
+  dynamics: <RelationshipDynamic>
+  dynamics__description__: Dynamic states of the relationship
+  notes: <Optional[LocalizedString]>
+  notes__description__: Additional notes on the relationship
+Alignment:
+  __description__: "Enumeration of character alignments, defining moral and ethical\
+    \ perspectives.\n\nAttributes:\n    LAWFUL_GOOD (str): Follows law and strives\
+    \ to do good.\n    NEUTRAL_GOOD (str): Does good without preference for law or\
+    \ chaos.\n    CHAOTIC_GOOD (str): Acts with a free spirit, but with a desire to\
+    \ do good.\n    LAWFUL_NEUTRAL (str): Respects law and order without bias toward\
+    \ good or evil.\n    TRUE_NEUTRAL (str): Balanced and indifferent to good, evil,\
+    \ law, or chaos.\n    CHAOTIC_NEUTRAL (str): Acts without regard for order, focusing\
+    \ on personal freedom.\n    LAWFUL_EVIL (str): Follows law and order but seeks\
+    \ to do harm or serve evil purposes.\n    NEUTRAL_EVIL (str): Pursues evil or\
+    \ self-serving goals without preference for law or chaos.\n    CHAOTIC_EVIL (str):\
+    \ Seeks destruction and harm without regard for rules or order."
+Rarity:
+  __description__: "Enumeration of item rarity levels, classifying availability and\
+    \ value.\n\nAttributes:\n    COMMON (str): Frequently found and easy to obtain.\n\
+    \    UNCOMMON (str): Less frequently found but still accessible.\n    RARE (str):\
+    \ Harder to find and valuable.\n    VERY_RARE (str): Highly valuable and challenging\
+    \ to acquire.\n    LEGENDARY (str): Extremely rare and powerful, often linked\
+    \ to unique lore.\n    UNIQUE (str): One-of-a-kind items with exceptional significance\
+    \ or power."
+EventType:
+  __description__: "Enumeration of event types for world-building and storytelling.\n\
+    \nClassifies the context and significance of occurrences in the world.\n\nAttributes:\n\
+    \    PERSONAL (str): Events of personal significance to characters.\n    HISTORICAL\
+    \ (str): Important events in the world's history.\n    QUEST (str): Events tied\
+    \ to missions or tasks undertaken by characters.\n    COMBAT (str): Battles or\
+    \ conflicts between entities.\n    SOCIAL (str): Social or political gatherings\
+    \ and interactions.\n    ECONOMIC (str): Events related to trade, wealth, or economic\
+    \ shifts.\n    NATURAL (str): Natural occurrences like weather changes or disasters.\n\
+    \    SUPERNATURAL (str): Events involving magic, divine intervention, or unearthly\
+    \ forces.\n    COSMIC (str): Events of a grand scale, affecting the universe or\
+    \ dimensions."
+Locale:
+  __description__: "Enumeration of supported locales for localization.\n\nAttributes:\n\
+    \    EN_US (str): English (United States).\n    ES_ES (str): Spanish (Spain).\n\
+    \    FR_FR (str): French (France).\n    DE_DE (str): German (Germany).\n    JA_JP\
+    \ (str): Japanese (Japan)."
+CharacterRace:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  traits: <list>
+  traits__description__: Racial traits or characteristics associated with the race
+  ability_bonuses: <dict>
+  ability_bonuses__description__: Ability score bonuses provided by the race
+CharacterClass:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  primary_ability: <str>
+  primary_ability__description__: Main ability associated with the class (e.g., Strength,
+    Intelligence)
+  saving_throw_proficiencies: <list>
+  saving_throw_proficiencies__description__: Saving throw proficiencies granted by
+    the class
+  skill_proficiencies: <list>
+  skill_proficiencies__description__: Skills that the class has proficiency in
+CharacterBackground:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  skill_proficiencies: <list>
+  skill_proficiencies__description__: Skills acquired based on background
+  feature: <LocalizedString>
+  feature__description__: Special feature or ability granted by the background
+AbilityScore:
+  __description__: "Represents an ability score with its base value and derived modifier.\n\
+    \nAttributes:\n    score (int): Base ability score (1-30).\n    modifier (int):\
+    \ Modifier derived from the ability score."
+  score: <int>
+  score__description__: Base ability score between 1 and 30
+  modifier: <int>
+  modifier__description__: Modifier derived from the ability score
+CharacterAbilityScores:
+  __description__: "Encapsulates all six primary ability scores for a character.\n\
+    \nAttributes:\n    strength (AbilityScore): Strength score and modifier.\n   \
+    \ dexterity (AbilityScore): Dexterity score and modifier.\n    constitution (AbilityScore):\
+    \ Constitution score and modifier.\n    intelligence (AbilityScore): Intelligence\
+    \ score and modifier.\n    wisdom (AbilityScore): Wisdom score and modifier.\n\
+    \    charisma (AbilityScore): Charisma score and modifier."
+  strength: <AbilityScore>
+  dexterity: <AbilityScore>
+  constitution: <AbilityScore>
+  intelligence: <AbilityScore>
+  wisdom: <AbilityScore>
+  charisma: <AbilityScore>
+CharacterSkill:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  ability: <str>
+  ability__description__: The ability score this skill is tied to (e.g., Dexterity)
+  proficient: <bool>
+  proficient__description__: Indicates if the character is proficient in the skill
+  expertise: <bool>
+  expertise__description__: Indicates if the character has expertise in the skill
+CharacterTrait:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  impact: <LocalizedString>
+  impact__description__: The potential impact of the trait on gameplay or narrative
+CharacterVoice:
+  __description__: "Represents the unique voice and dialogue style of a character.\n\
+    \nAttributes:\n    speech_patterns (List[str]): Common speech patterns or phrases.\n\
+    \    tone (str): Overall tone of the character's speech.\n    vocabulary (List[str]):\
+    \ Unique or characteristic words used by the character."
+  speech_patterns: <list>
+  speech_patterns__description__: Common speech patterns or phrases
+  tone: <str>
+  tone__description__: Overall tone of the character's speech
+  vocabulary: <list>
+  vocabulary__description__: Unique or characteristic words used by the character
+CharacterArc:
+  __description__: "Represents a character's development arc over time.\n\nAttributes:\n\
+    \    starting_state (LocalizedString): Initial state or personality of the character.\n\
+    \    key_events (List[UUID]): UUIDs of events crucial to character development.\n\
+    \    ending_state (LocalizedString): Final or current state of the character's\
+    \ development."
+  starting_state: <LocalizedString>
+  starting_state__description__: Initial state or personality of the character
+  key_events: <list>
+  key_events__description__: UUIDs of events crucial to character development
+  ending_state: <LocalizedString>
+  ending_state__description__: Final or current state of the character's development
+CharacterSheet:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  race: <CharacterRace>
+  character_class: <CharacterClass>
+  background: <CharacterBackground>
+  level: <int>
+  level__description__: Character's level, starting at 1
+  experience: <int>
+  experience__description__: Experience points accumulated by the character
+  alignment: <Alignment>
+  ability_scores: <CharacterAbilityScores>
+  skills: <list>
+  skills__description__: List of the character's skills
+  traits: <list>
+  traits__description__: List of character-specific traits
+  inventory: <list>
+  inventory__description__: UUIDs of items held by the character
+  relationships: <list>
+  relationships__description__: Relationships with other characters
+  backstory: <LocalizedString>
+  backstory__description__: The character's personal backstory
+  voice: <CharacterVoice>
+  voice__description__: The character's unique voice and dialogue style
+  character_arc: <CharacterArc>
+  character_arc__description__: The character's development arc
+  notes: <LocalizedString>
+  notes__description__: General notes or additional information
+ItemEvolution:
+  __description__: "Represents the evolution of an item over time or through specific\
+    \ events.\n\nAttributes:\n    stages (List[Dict[str, Any]]): List of evolution\
+    \ stages with their properties.\n    current_stage (int): Index of the current\
+    \ evolution stage.\n    evolution_trigger (Optional[str]): Condition that triggers\
+    \ evolution to the next stage."
+  stages: []
+  stages__description__: List of evolution stages with their properties
+  current_stage: <int>
+  current_stage__description__: Index of the current evolution stage
+  evolution_trigger: <Optional[str]>
+  evolution_trigger__description__: Condition that triggers evolution to the next
+    stage
+ItemCraftingRecipe:
+  __description__: "Represents a recipe for crafting an item.\n\nAttributes:\n   \
+    \ ingredients (List[Dict[UUID, int]]): List of required ingredient UUIDs and quantities.\n\
+    \    tools (List[UUID]): List of required tool UUIDs.\n    skill_requirements\
+    \ (Dict[str, int]): Required skills and their minimum levels.\n    crafting_time\
+    \ (int): Time required to craft the item in minutes.\n    difficulty (int): Difficulty\
+    \ of crafting on a scale of 1-100."
+  ingredients: []
+  ingredients__description__: List of required ingredient UUIDs and quantities
+  tools: <list>
+  tools__description__: List of required tool UUIDs
+  skill_requirements: <dict>
+  skill_requirements__description__: Required skills and their minimum levels
+  crafting_time: <int>
+  crafting_time__description__: Time required to craft the item in minutes
+  difficulty: <int>
+  difficulty__description__: Difficulty of crafting on a scale of 1-100
+Item:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  rarity: <Rarity>
+  weight: <float>
+  weight__description__: Weight of the item in arbitrary units
+  value: <int>
+  value__description__: Monetary or barter value of the item
+  evolution: <Optional[ItemEvolution]>
+  evolution__description__: Evolution stages of the item
+  crafting_recipe: <Optional[ItemCraftingRecipe]>
+  crafting_recipe__description__: Recipe for crafting the item
+ClimateModel:
+  __description__: "Represents the climate of a location.\n\nAttributes:\n    temperature_range\
+    \ (Dict[str, float]): Temperature range for different seasons.\n    precipitation\
+    \ (Dict[str, float]): Precipitation levels for different seasons.\n    wind_patterns\
+    \ (Dict[str, str]): Wind patterns for different seasons.\n    natural_disasters\
+    \ (List[str]): Possible natural disasters in the area."
+  temperature_range: {}
+  temperature_range__description__: Temperature range for different seasons
+  precipitation: {}
+  precipitation__description__: Precipitation levels for different seasons
+  wind_patterns: {}
+  wind_patterns__description__: Wind patterns for different seasons
+  natural_disasters: <list>
+  natural_disasters__description__: Possible natural disasters in the area
+LocationHistory:
+  __description__: "Represents the historical changes of a location over time.\n\n\
+    Attributes:\n    key_events (List[UUID]): UUIDs of significant events in the location's\
+    \ history.\n    previous_names (List[LocalizedString]): Previous names of the\
+    \ location.\n    major_changes (List[LocalizedString]): Major changes the location\
+    \ has undergone."
+  key_events: <list>
+  key_events__description__: UUIDs of significant events in the location's history
+  previous_names: <list>
+  previous_names__description__: Previous names of the location
+  major_changes: <list>
+  major_changes__description__: Major changes the location has undergone
+Location:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  type: <str>
+  type__description__: Type of location (e.g., City, Forest, Dungeon)
+  parent_location: <Optional[<ast.Attribute object at 0x10fffe810>]>
+  parent_location__description__: UUID of the parent location
+  sub_locations: <list>
+  sub_locations__description__: UUIDs of sub-locations within this location
+  inhabitants: <list>
+  inhabitants__description__: UUIDs of entities inhabiting this location
+  points_of_interest: <list>
+  points_of_interest__description__: Notable landmarks within this area
+  government_type: <Optional[str]>
+  government_type__description__: Type of government overseeing the location
+  wealth: <Optional[int]>
+  wealth__description__: Wealth level of the location, on a scale of 1-10
+  climate: <ClimateModel>
+  climate__description__: Climate model of the location
+  history: <LocationHistory>
+  history__description__: Historical information about the location
+FactionRank:
+  __description__: "Represents a rank within a faction's hierarchy.\n\nAttributes:\n\
+    \    name (LocalizedString): Name of the rank.\n    level (int): Numeric level\
+    \ of the rank within the hierarchy.\n    responsibilities (List[LocalizedString]):\
+    \ Responsibilities associated with the rank.\n    privileges (List[LocalizedString]):\
+    \ Privileges granted to members of this rank."
+  name: <LocalizedString>
+  name__description__: Name of the rank
+  level: <int>
+  level__description__: Numeric level of the rank within the hierarchy
+  responsibilities: <list>
+  responsibilities__description__: Responsibilities associated with the rank
+  privileges: <list>
+  privileges__description__: Privileges granted to members of this rank
+FactionHierarchy:
+  __description__: "Represents the internal structure and ranks of a faction.\n\n\
+    Attributes:\n    ranks (List[FactionRank]): List of ranks within the faction.\n\
+    \    leadership_structure (LocalizedString): Description of how leadership is\
+    \ structured."
+  ranks: []
+  ranks__description__: List of ranks within the faction
+  leadership_structure: <LocalizedString>
+  leadership_structure__description__: Description of how leadership is structured
+FactionDiplomacy:
+  __description__: "Represents diplomatic relations between factions.\n\nAttributes:\n\
+    \    allies (List[UUID]): UUIDs of allied factions.\n    enemies (List[UUID]):\
+    \ UUIDs of enemy factions.\n    neutral (List[UUID]): UUIDs of factions with neutral\
+    \ relations.\n    trade_agreements (List[UUID]): UUIDs of factions with trade\
+    \ agreements."
+  allies: <list>
+  allies__description__: UUIDs of allied factions
+  enemies: <list>
+  enemies__description__: UUIDs of enemy factions
+  neutral: <list>
+  neutral__description__: UUIDs of factions with neutral relations
+  trade_agreements: <list>
+  trade_agreements__description__: UUIDs of factions with trade agreements
+Faction:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  leader: <<ast.Attribute object at 0x110011cd0>>
+  leader__description__: UUID of the entity that leads the faction
+  members: <list>
+  members__description__: UUIDs of faction members
+  goals: <list>
+  goals__description__: Goals or objectives the faction strives for
+  resources: <list>
+  resources__description__: Resources or assets the faction controls
+  hierarchy: <FactionHierarchy>
+  hierarchy__description__: Internal structure and ranks of the faction
+  diplomacy: <FactionDiplomacy>
+  diplomacy__description__: Diplomatic relations with other factions
+EventImpact:
+  __description__: "Represents the impact of an event on various entities in the world.\n\
+    \nAttributes:\n    affected_characters (List[Dict[UUID, str]]): UUIDs of affected\
+    \ characters and descriptions of effects.\n    affected_locations (List[Dict[UUID,\
+    \ str]]): UUIDs of affected locations and descriptions of effects.\n    affected_factions\
+    \ (List[Dict[UUID, str]]): UUIDs of affected factions and descriptions of effects.\n\
+    \    world_changes (List[LocalizedString]): General changes to the world as a\
+    \ result of the event."
+  affected_characters: <list>
+  affected_characters__description__: UUIDs of affected characters and descriptions
+    of effects
+  affected_locations: <list>
+  affected_locations__description__: UUIDs of affected locations and descriptions
+    of effects
+  affected_factions: <list>
+  affected_factions__description__: UUIDs of affected factions and descriptions of
+    effects
+  world_changes: <list>
+  world_changes__description__: General changes to the world as a result of the event
+Event:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  event_type: <EventType>
+  event_type__description__: Type of event that occurred
+  date: <datetime>
+  date__description__: Date and time the event took place
+  location: <<ast.Attribute object at 0x110022d90>>
+  location__description__: UUID of the location where the event occurred
+  participants: <list>
+  participants__description__: UUIDs of participants involved in the event
+  consequences: <list>
+  consequences__description__: Consequences or outcomes of the event
+  related_items: <list>
+  related_items__description__: UUIDs of items involved in the event
+  impact: <EventImpact>
+  impact__description__: Detailed impact of the event on the world and its entities
+EventChain:
+  __description__: "Represents a chain of related events.\n\nAttributes:\n    events\
+    \ (List[UUID]): UUIDs of events in the chain, in chronological order.\n    causality\
+    \ (List[LocalizedString]): Descriptions of how each event led to the next."
+  events: []
+  events__description__: UUIDs of events in the chain, in chronological order
+  causality: <list>
+  causality__description__: Descriptions of how each event led to the next
+WorldSheet:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  locations: <list>
+  locations__description__: UUIDs of all major locations in the world
+  factions: <list>
+  factions__description__: UUIDs of factions present in the world
+  events: <list>
+  events__description__: UUIDs of major events that occurred within the world
+  characters: <list>
+  characters__description__: UUIDs of characters present in the world
+  items: <list>
+  items__description__: UUIDs of notable items in the world
+  lore: <LocalizedString>
+  lore__description__: General lore or history of the world
+  notes: <LocalizedString>
+  notes__description__: Additional notes or general information
+TimelineEvent:
+  __description__: "Represents an event specifically tied to a point in the timeline.\n\
+    \nAttributes:\n    event_id (UUID): UUID of the associated event.\n    timestamp\
+    \ (datetime): Specific timestamp of the event in the timeline.\n    significance\
+    \ (LocalizedString): Description of the event's significance in the timeline."
+  event_id: <<ast.Attribute object at 0x110034b10>>
+  event_id__description__: UUID of the associated event
+  timestamp: <datetime>
+  timestamp__description__: Specific timestamp of the event in the timeline
+  significance: <LocalizedString>
+  significance__description__: Description of the event's significance in the timeline
+TimelineNode:
+  __description__: "Represents a node in a branching timeline, allowing for complex\
+    \ narrative progression.\n\nAttributes:\n    event_id (UUID): UUID of the associated\
+    \ event.\n    timestamp (datetime): Timestamp for when this node occurs.\n   \
+    \ next_nodes (List[UUID]): UUIDs of potential future timeline nodes.\n    previous_nodes\
+    \ (List[UUID]): UUIDs of previous timeline nodes.\n    branch_probability (float):\
+    \ Likelihood of this branch being followed."
+  event_id: <<ast.Attribute object at 0x110035c50>>
+  event_id__description__: UUID of the associated event
+  timestamp: <datetime>
+  timestamp__description__: Timestamp for when this node occurs
+  next_nodes: <list>
+  next_nodes__description__: UUIDs of potential future timeline nodes
+  previous_nodes: <list>
+  previous_nodes__description__: UUIDs of previous timeline nodes
+  branch_probability: <float>
+  branch_probability__description__: Likelihood of this branch being followed
+Timeline:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  nodes: <list>
+  nodes__description__: Nodes representing events in the timeline
+  active_branch: <<ast.Attribute object at 0x1100442d0>>
+  active_branch__description__: The currently active node in the timeline
+  convergence_points: <list>
+  convergence_points__description__: UUIDs of points where branches converge
+UniverseSheet:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  dimensions: <list>
+  dimensions__description__: UUIDs of dimensions within the universe
+  timelines: <list>
+  timelines__description__: UUIDs of timelines in the universe
+  cosmic_entities: <list>
+  cosmic_entities__description__: UUIDs of notable cosmic entities present in the
+    universe
+  universal_laws: <list>
+  universal_laws__description__: Universal laws governing physics or magic in the
+    universe
+  notes: <LocalizedString>
+  notes__description__: Additional notes or information
+Rule:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  mechanics: <dict>
+  mechanics__description__: Key mechanics or parameters governed by the rule
+  applicability: <list>
+  applicability__description__: Contexts or situations where this rule applies
+  exceptions: <list>
+  exceptions__description__: Exceptions to the rule
+Scenario:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  location: <<ast.Attribute object at 0x11004ccd0>>
+  location__description__: UUID of the location where the scenario takes place
+  characters: <list>
+  characters__description__: UUIDs of characters involved in the scenario
+  objectives: <list>
+  objectives__description__: Goals or objectives for this scenario
+  challenges: <list>
+  challenges__description__: Challenges or obstacles present in the scenario
+  outcomes: <list>
+  outcomes__description__: Possible outcomes of the scenario
+SimulationParameter:
+  __description__: "Represents a customizable parameter for world simulations.\n\n\
+    Attributes:\n    name (str): Name of the parameter.\n    value (Union[int, float,\
+    \ str, bool]): Current value of the parameter.\n    description (LocalizedString):\
+    \ Description of what this parameter affects.\n    range (Optional[Dict[str, Union[int,\
+    \ float]]]): Possible range of values for numeric parameters."
+  name: <str>
+  name__description__: Name of the parameter
+  value: <Union[<ast.Tuple object at 0x11004f310>]>
+  value__description__: Current value of the parameter
+  description: <LocalizedString>
+  description__description__: Description of what this parameter affects
+  range: <Optional[Dict[<ast.Tuple object at 0x11005c090>]]>
+  range__description__: Possible range of values for numeric parameters
+WorldSimulation:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  world_id: <<ast.Attribute object at 0x11005cbd0>>
+  world_id__description__: UUID of the world being simulated
+  active_scenarios: <list>
+  active_scenarios__description__: UUIDs of currently active scenarios
+  simulation_parameters: <list>
+  simulation_parameters__description__: Customizable parameters for the simulation
+  current_state: <dict>
+  current_state__description__: Current state of various aspects of the world
+  history: <list>
+  history__description__: History of changes in the world state
+SimulationSheet:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  rules: <list>
+  rules__description__: UUIDs of rules governing the simulation
+  scenarios: <list>
+  scenarios__description__: UUIDs of scenarios currently active within the simulation
+  active_characters: <list>
+  active_characters__description__: UUIDs of characters currently engaged in the simulation
+  current_world: <<ast.Attribute object at 0x110064410>>
+  current_world__description__: UUID of the world where the current simulation is
+    taking place
+  world_simulation: <WorldSimulation>
+  world_simulation__description__: Current state and parameters of the world simulation
+  game_master_notes: <LocalizedString>
+  game_master_notes__description__: Additional notes or observations from the game
+    master
+Memories:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  memory_string: <LocalizedString>
+  memory_string__description__: Detailed memory or experience associated with an entity
+  associated_entity_id: <<ast.Attribute object at 0x110065a90>>
+  associated_entity_id__description__: UUID of the entity that this memory belongs
+    to
+  event_id: <Optional[<ast.Attribute object at 0x110066090>]>
+  event_id__description__: UUID of the associated event, if applicable
+  location_id: <Optional[<ast.Attribute object at 0x110066690>]>
+  location_id__description__: UUID of the associated location, if applicable
+  emotional_impact: <int>
+  emotional_impact__description__: Emotional impact of the memory, from -100 to 100
+  recall_difficulty: <int>
+  recall_difficulty__description__: Difficulty of recalling this memory, from 0 to
+    100
+Config: {}

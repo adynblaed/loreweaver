@@ -1,0 +1,5 @@
+{
+  "Alignment": {
+    "__description__": "Enumeration of character alignments, defining moral and ethical perspectives.\n\nAttributes:\n    LAWFUL_GOOD (str): Follows law and strives to do good.\n    NEUTRAL_GOOD (str): Does good without preference for law or chaos.\n    CHAOTIC_GOOD (str): Acts with a free spirit, but with a desire to do good.\n    LAWFUL_NEUTRAL (str): Respects law and order without bias toward good or evil.\n    TRUE_NEUTRAL (str): Balanced and indifferent to good, evil, law, or chaos.\n    CHAOTIC_NEUTRAL (str): Acts without regard for order, focusing on personal freedom.\n    LAWFUL_EVIL (str): Follows law and order but seeks to do harm or serve evil purposes.\n    NEUTRAL_EVIL (str): Pursues evil or self-serving goals without preference for law or chaos.\n    CHAOTIC_EVIL (str): Seeks destruction and harm without regard for rules or order."
+  }
+}

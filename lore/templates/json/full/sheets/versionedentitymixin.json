@@ -1,0 +1,15 @@
+{
+  "VersionedEntityMixin": {
+    "__description__": "Mixin for versioning and history tracking.\n\nAttributes:\n    version (int): Version number of the entity.\n    created_at (datetime): Creation timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]): List of version control history entries.",
+    "version": "<int>",
+    "version__description__": "Version number of the entity",
+    "created_at": "<utcnow>",
+    "created_at__description__": "Creation timestamp",
+    "updated_at": "<utcnow>",
+    "updated_at__description__": "Last update timestamp",
+    "change_log": "<list>",
+    "change_log__description__": "Log of changes made to the entity",
+    "version_history": "<list>",
+    "version_history__description__": "List of version control history entries"
+  }
+}

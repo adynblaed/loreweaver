@@ -1,0 +1,4 @@
+ItemEvolution:
+  stages: []
+  current_stage: <int>
+  evolution_trigger: <Optional[str]>

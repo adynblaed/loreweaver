@@ -1,0 +1,9 @@
+{
+  "Relationship": {
+    "source_id": "<<ast.Attribute object at 0x104809e50>>",
+    "target_id": "<<ast.Attribute object at 0x104864cd0>>",
+    "relationship_type": "<str>",
+    "dynamics": "<RelationshipDynamic>",
+    "notes": "<Optional[LocalizedString]>"
+  }
+}

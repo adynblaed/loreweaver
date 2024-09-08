@@ -1,0 +1,5 @@
+Locale:
+  __description__: "Enumeration of supported locales for localization.\n\nAttributes:\n\
+    \    EN_US (str): English (United States).\n    ES_ES (str): Spanish (Spain).\n\
+    \    FR_FR (str): French (France).\n    DE_DE (str): German (Germany).\n    JA_JP\
+    \ (str): Japanese (Japan)."

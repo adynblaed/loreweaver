@@ -1,0 +1,4 @@
+CharacterVoice:
+  speech_patterns: <list>
+  tone: <str>
+  vocabulary: <list>

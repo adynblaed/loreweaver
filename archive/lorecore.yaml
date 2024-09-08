@@ -1,0 +1,370 @@
+# ----------------------------------------------
+# LoreCore YAML Schema
+# ----------------------------------------------
+lorecore_metadata:
+  schema_info:
+    title: "LoreCore YAML Schema"
+    description: "Default YAML schema for the LoreCore world-building framework"
+    version: "1.0"
+    created_at: 2024-09-07T00:00:00Z
+    updated_at: 2024-09-07T00:00:00Z
+  author:
+    name: "Adyn Blaed"
+    role: "Creator"
+    contact: "adyn@blaed.net"
+  project:
+    name: "HyperTech LoreCore"
+    organization: "HyperTech"
+    website: "https://hyperiontechnologies.com/lorecore"
+  license:
+    type: "Apache 2.0"
+    terms: "GL, HF."
+  technical_details:
+    supported_formats: ["MD", "YAML", "JSON"]
+    compatible_versions: ["1.0"]
+    requirements:
+      - "pyyaml==6.0.2"
+      - "pydantic==2.9.0"
+    plugins:
+      - "openai==1.44.0"
+      - "vllm==0.6.0"
+
+# ----------------------------------------------
+# Custom Types
+# ----------------------------------------------
+UUID: &UUID "UUID"  # Used for ID fields
+Datetime: &Datetime "datetime"  # Used for timestamp fields
+
+# ----------------------------------------------
+# Base Models and Mixins
+# ----------------------------------------------
+version_control: &version_control
+  version_id: *UUID
+  parent_version: *UUID
+  timestamp: *Datetime
+  changes: !map
+  author: !str
+
+versioned_entity_mixin: &versioned_entity_mixin
+  version: !int
+  created_at: *Datetime
+  updated_at: *Datetime
+  change_log: [!str]
+  version_history: [*version_control]
+
+localized_string: &localized_string
+  default: !str
+  translations:
+    en-US: !str
+    es-ES: !str
+    fr-FR: !str
+    de-DE: !str
+    ja-JP: !str
+
+tag: &tag
+  category: !str
+  value: !str
+
+base_entity: &base_entity
+  <<: *versioned_entity_mixin
+  uuid: *UUID
+  system_name: !str
+  canonical_name: *localized_string
+  description: *localized_string
+  timeline: *UUID
+  system_timestamp: *Datetime
+  canonical_timestamp: !str
+  metadata: !map
+  tags: [*tag]
+
+relationship_dynamic: &relationship_dynamic
+  trust: !float
+  loyalty: !float
+  familiarity: !float
+  tension: !float
+  shared_history: [*UUID]
+
+relationship: &relationship
+  source_id: *UUID
+  target_id: *UUID
+  relationship_type: !str
+  dynamics: *relationship_dynamic
+  notes: *localized_string
+
+# ----------------------------------------------
+# Enumerations
+# ----------------------------------------------
+alignment: &alignment
+  !tag:lorecore:alignment
+  [Lawful Good, Neutral Good, Chaotic Good, Lawful Neutral, True Neutral, Chaotic Neutral, Lawful Evil, Neutral Evil, Chaotic Evil]
+
+rarity: &rarity
+  !tag:lorecore:rarity
+  [Common, Uncommon, Rare, Very Rare, Legendary, Unique]
+
+event_type: &event_type
+  !tag:lorecore:event_type
+  [Personal, Historical, Quest, Combat, Social, Economic, Natural, Supernatural, Cosmic]
+
+locale: &locale
+  !tag:lorecore:locale
+  [en-US, es-ES, fr-FR, de-DE, ja-JP]
+
+# ----------------------------------------------
+# Character Models
+# ----------------------------------------------
+character_race: &character_race
+  <<: *base_entity
+  traits: [*localized_string]
+  ability_bonuses: !map
+
+character_class: &character_class
+  <<: *base_entity
+  primary_ability: !str
+  saving_throw_proficiencies: [!str]
+  skill_proficiencies: [!str]
+
+character_background: &character_background
+  <<: *base_entity
+  skill_proficiencies: [!str]
+  feature: *localized_string
+
+ability_score: &ability_score
+  score: !int
+  modifier: !int
+
+character_ability_scores: &character_ability_scores
+  strength: *ability_score
+  dexterity: *ability_score
+  constitution: *ability_score
+  intelligence: *ability_score
+  wisdom: *ability_score
+  charisma: *ability_score
+
+character_skill: &character_skill
+  <<: *base_entity
+  ability: !str
+  proficient: !bool
+  expertise: !bool
+
+character_trait: &character_trait
+  <<: *base_entity
+  impact: *localized_string
+
+character_voice: &character_voice
+  speech_patterns: [!str]
+  tone: !str
+  vocabulary: [!str]
+
+character_arc: &character_arc
+  starting_state: *localized_string
+  key_events: [*UUID]
+  ending_state: *localized_string
+
+character_sheet: &character_sheet
+  <<: *base_entity
+  race: *character_race
+  character_class: *character_class
+  background: *character_background
+  level: !int
+  experience: !int
+  alignment: *alignment
+  ability_scores: *character_ability_scores
+  skills: [*character_skill]
+  traits: [*character_trait]
+  inventory: [*UUID]
+  relationships: [*relationship]
+  backstory: *localized_string
+  voice: *character_voice
+  character_arc: *character_arc
+  notes: *localized_string
+
+# ----------------------------------------------
+# Item Models
+# ----------------------------------------------
+item_evolution: &item_evolution
+  stages: [!map]
+  current_stage: !int
+  evolution_trigger: !str
+
+item_crafting_recipe: &item_crafting_recipe
+  ingredients: [!map]
+  tools: [*UUID]
+  skill_requirements: !map
+  crafting_time: !int
+  difficulty: !int
+
+item: &item
+  <<: *base_entity
+  rarity: *rarity
+  weight: !float
+  value: !int
+  evolution: *item_evolution
+  crafting_recipe: *item_crafting_recipe
+
+# ----------------------------------------------
+# Location Models
+# ----------------------------------------------
+climate_model: &climate_model
+  temperature_range: !map
+  precipitation: !map
+  wind_patterns: !map
+  natural_disasters: [!str]
+
+location_history: &location_history
+  key_events: [*UUID]
+  previous_names: [*localized_string]
+  major_changes: [*localized_string]
+
+location: &location
+  <<: *base_entity
+  type: !str
+  parent_location: *UUID
+  sub_locations: [*UUID]
+  inhabitants: [*UUID]
+  points_of_interest: [*localized_string]
+  government_type: !str
+  wealth: !int
+  climate: *climate_model
+  history: *location_history
+
+# ----------------------------------------------
+# Faction Models
+# ----------------------------------------------
+faction_rank: &faction_rank
+  name: *localized_string
+  level: !int
+  responsibilities: [*localized_string]
+  privileges: [*localized_string]
+
+faction_hierarchy: &faction_hierarchy
+  ranks: [*faction_rank]
+  leadership_structure: *localized_string
+
+faction_diplomacy: &faction_diplomacy
+  allies: [*UUID]
+  enemies: [*UUID]
+  neutral: [*UUID]
+  trade_agreements: [*UUID]
+
+faction: &faction
+  <<: *base_entity
+  leader: *UUID
+  members: [*UUID]
+  goals: [*localized_string]
+  resources: [*localized_string]
+  hierarchy: *faction_hierarchy
+  diplomacy: *faction_diplomacy
+
+# ----------------------------------------------
+# Event Models
+# ----------------------------------------------
+event_impact: &event_impact
+  affected_characters: [!map]
+  affected_locations: [!map]
+  affected_factions: [!map]
+  world_changes: [*localized_string]
+
+event: &event
+  <<: *base_entity
+  event_type: *event_type
+  date: *Datetime
+  location: *UUID
+  participants: [*UUID]
+  consequences: [*localized_string]
+  related_items: [*UUID]
+  impact: *event_impact
+
+event_chain: &event_chain
+  events: [*UUID]
+  causality: [*localized_string]
+
+# ----------------------------------------------
+# World and Universe Models
+# ----------------------------------------------
+world_sheet: &world_sheet
+  <<: *base_entity
+  locations: [*UUID]
+  factions: [*UUID]
+  events: [*UUID]
+  characters: [*UUID]
+  items: [*UUID]
+  lore: *localized_string
+  notes: *localized_string
+
+timeline_event: &timeline_event
+  event_id: *UUID
+  timestamp: *Datetime
+  significance: *localized_string
+
+timeline_node: &timeline_node
+  event_id: *UUID
+  timestamp: *Datetime
+  next_nodes: [*UUID]
+  previous_nodes: [*UUID]
+  branch_probability: !float
+
+timeline: &timeline
+  <<: *base_entity
+  nodes: [*timeline_node]
+  active_branch: *UUID
+  convergence_points: [*UUID]
+
+universe_sheet: &universe_sheet
+  <<: *base_entity
+  dimensions: [*UUID]
+  timelines: [*UUID]
+  cosmic_entities: [*UUID]
+  universal_laws: [*localized_string]
+  notes: *localized_string
+
+# ----------------------------------------------
+# Rule, Scenario, and Simulation Models
+# ----------------------------------------------
+rule: &rule
+  <<: *base_entity
+  mechanics: !map
+  applicability: [!str]
+  exceptions: [*localized_string]
+
+scenario: &scenario
+  <<: *base_entity
+  location: *UUID
+  characters: [*UUID]
+  objectives: [*localized_string]
+  challenges: [*localized_string]
+  outcomes: [*localized_string]
+
+simulation_parameters: &simulation_parameters
+  name: !str
+  description: *localized_string
+  range: !map
+
+world_simulation: &world_simulation
+  <<: *base_entity
+  world_id: *UUID
+  active_scenarios: [*UUID]
+  simulation_parameters: [*simulation_parameters]
+  current_state: !map
+  history: [!map]
+
+simulation_sheet: &simulation_sheet
+  <<: *base_entity
+  rules: [*UUID]
+  scenarios: [*UUID]
+  active_characters: [*UUID]
+  current_world: *UUID
+  world_simulation: *world_simulation
+  game_master_notes: *localized_string
+
+# ----------------------------------------------
+# Dynamic Memory Models
+# ----------------------------------------------
+memory: &memory
+  <<: *base_entity
+  memory_string: *localized_string
+  associated_entity_id: *UUID
+  event_id: *UUID
+  location_id: *UUID
+  emotional_impact: !int
+  recall_difficulty: !int

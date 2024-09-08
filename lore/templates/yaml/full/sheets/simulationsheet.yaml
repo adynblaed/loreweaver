@@ -1,0 +1,53 @@
+SimulationSheet:
+  __description__: "Mixin for versioning and history tracking.\n\nAttributes:\n  \
+    \  version (int): Version number of the entity.\n    created_at (datetime): Creation\
+    \ timestamp.\n    updated_at (datetime): Last update timestamp.\n    change_log\
+    \ (List[str]): Log of changes made to the entity.\n    version_history (List[VersionControl]):\
+    \ List of version control history entries."
+  version: <int>
+  version__description__: Version number of the entity
+  created_at: <utcnow>
+  created_at__description__: Creation timestamp
+  updated_at: <utcnow>
+  updated_at__description__: Last update timestamp
+  change_log: <list>
+  change_log__description__: Log of changes made to the entity
+  version_history: <list>
+  version_history__description__: List of version control history entries
+  uuid: <uuid4>
+  uuid__description__: Unique identifier for the entity. Can be UUID, string, or integer.
+  system_name: <Union[<ast.Tuple object at 0x10ff7f5d0>]>
+  system_name__description__: System-friendly name of the entity. Auto-generated from
+    uuid or canonical name if not provided.
+  canonical_name: <<ast.Constant object at 0x10ff7f010>>
+  canonical_name__description__: World-builder friendly canonical name of the entity,
+    used for display or narrative purposes.
+  description: <Optional[<ast.Constant object at 0x10ff7ea90>]>
+  description__description__: Description of the entity. Can be localized for multiple
+    languages.
+  timeline: <Optional[Union[<ast.Tuple object at 0x10ff7e410>]]>
+  timeline__description__: ID or name of the timeline this entity is associated with.
+  system_timestamp: <Optional[datetime]>
+  system_timestamp__description__: System-generated timestamp for technical tracking
+    and real-world reference (e.g., ISO 8601 format).
+  canonical_timestamp: <Optional[Union[<ast.Tuple object at 0x10ff7d6d0>]]>
+  canonical_timestamp__description__: User-defined or world-specific timestamp, allowing
+    flexible formats (e.g., 'Epoch 5023', 'Year 200 of the Dawn Era').
+  metadata: <dict>
+  metadata__description__: Additional metadata for the entity, to store extra information.
+  tags: <list>
+  tags__description__: Tags for categorization and filtering of the entity.
+  rules: <list>
+  rules__description__: UUIDs of rules governing the simulation
+  scenarios: <list>
+  scenarios__description__: UUIDs of scenarios currently active within the simulation
+  active_characters: <list>
+  active_characters__description__: UUIDs of characters currently engaged in the simulation
+  current_world: <<ast.Attribute object at 0x110064410>>
+  current_world__description__: UUID of the world where the current simulation is
+    taking place
+  world_simulation: <WorldSimulation>
+  world_simulation__description__: Current state and parameters of the world simulation
+  game_master_notes: <LocalizedString>
+  game_master_notes__description__: Additional notes or observations from the game
+    master

@@ -1,0 +1,9 @@
+{
+  "RelationshipDynamic": {
+    "trust": "<float>",
+    "loyalty": "<float>",
+    "familiarity": "<float>",
+    "tension": "<float>",
+    "shared_history": "<list>"
+  }
+}

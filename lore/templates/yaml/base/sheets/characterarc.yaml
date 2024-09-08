@@ -1,0 +1,4 @@
+CharacterArc:
+  starting_state: <LocalizedString>
+  key_events: <list>
+  ending_state: <LocalizedString>

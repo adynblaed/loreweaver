@@ -1,0 +1,10 @@
+{
+  "CharacterAbilityScores": {
+    "strength": "<AbilityScore>",
+    "dexterity": "<AbilityScore>",
+    "constitution": "<AbilityScore>",
+    "intelligence": "<AbilityScore>",
+    "wisdom": "<AbilityScore>",
+    "charisma": "<AbilityScore>"
+  }
+}

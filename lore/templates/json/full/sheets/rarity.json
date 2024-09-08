@@ -1,0 +1,5 @@
+{
+  "Rarity": {
+    "__description__": "Enumeration of item rarity levels, classifying availability and value.\n\nAttributes:\n    COMMON (str): Frequently found and easy to obtain.\n    UNCOMMON (str): Less frequently found but still accessible.\n    RARE (str): Harder to find and valuable.\n    VERY_RARE (str): Highly valuable and challenging to acquire.\n    LEGENDARY (str): Extremely rare and powerful, often linked to unique lore.\n    UNIQUE (str): One-of-a-kind items with exceptional significance or power."
+  }
+}

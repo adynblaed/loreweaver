@@ -1,0 +1,8 @@
+{
+  "FactionDiplomacy": {
+    "allies": "<list>",
+    "enemies": "<list>",
+    "neutral": "<list>",
+    "trade_agreements": "<list>"
+  }
+}

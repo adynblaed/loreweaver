@@ -1,0 +1,194 @@
+# Version and metadata information
+version: "1.1"
+author: "Adyn Blaed"
+project: "HyperTech StoryForge"
+date: "Saturday, September 7th, 2024"
+
+# CharacterSheet Template
+character:
+  system_id: "char_001"
+  canonical_id: "hero001"
+  name: "Placeholder Hero"
+  description: "A placeholder character for demo purposes."
+  tags: 
+    - "hero"
+    - "placeholder"
+  race:
+    system_id: "race_001"
+    canonical_id: "human"
+    name: "Human"
+    description: "A basic human race."
+    traits:
+      - "Resilient"
+      - "Adaptable"
+    ability_bonuses:
+      strength: 1
+      intelligence: 1
+  character_class:
+    system_id: "class_001"
+    canonical_id: "warrior"
+    name: "Warrior"
+    description: "A strong fighter class."
+    primary_ability: "Strength"
+    saving_throw_proficiencies:
+      - "Strength"
+      - "Constitution"
+    skill_proficiencies:
+      - "Athletics"
+      - "Intimidation"
+  background:
+    system_id: "bg_001"
+    canonical_id: "soldier"
+    name: "Soldier"
+    description: "A battle-hardened veteran."
+    feature: "Military Rank"
+    skill_proficiencies:
+      - "Survival"
+      - "Athletics"
+  level: 1
+  experience: 0
+  alignment: "True Neutral"
+  ability_scores:
+    system_id: "abilities_001"
+    canonical_id: "ability_scores_hero001"
+    name: "Hero Ability Scores"
+    strength:
+      system_id: "ability_001"
+      canonical_id: "str"
+      name: "Strength"
+      score: 10
+      modifier: 0
+    dexterity:
+      system_id: "ability_002"
+      canonical_id: "dex"
+      name: "Dexterity"
+      score: 10
+      modifier: 0
+    constitution:
+      system_id: "ability_003"
+      canonical_id: "con"
+      name: "Constitution"
+      score: 10
+      modifier: 0
+    intelligence:
+      system_id: "ability_004"
+      canonical_id: "int"
+      name: "Intelligence"
+      score: 10
+      modifier: 0
+    wisdom:
+      system_id: "ability_005"
+      canonical_id: "wis"
+      name: "Wisdom"
+      score: 10
+      modifier: 0
+    charisma:
+      system_id: "ability_006"
+      canonical_id: "cha"
+      name: "Charisma"
+      score: 10
+      modifier: 0
+  skills:
+    - system_id: "skill_001"
+      canonical_id: "athletics"
+      name: "Athletics"
+      description: "Physical prowess."
+      ability: "Strength"
+      proficient: true
+      expertise: false
+  traits:
+    - system_id: "trait_001"
+      canonical_id: "brave"
+      name: "Brave"
+      description: "Courageous in the face of danger."
+      impact: "Increased resistance to fear."
+  inventory:
+    - system_id: "item_001"
+      canonical_id: "sword"
+      name: "Sword"
+      description: "A sharp blade."
+      rarity: "Common"
+      weight: 5.0
+      value: 100
+  relationships:
+    - system_id: "rel_001"
+      canonical_id: "friend_001"
+      name: "Friendship with NPC"
+      description: "A friendly relationship."
+      type: "Friend"
+      strength: 50
+  backstory: "Born in a small village, this placeholder hero grew up dreaming of adventures."
+  notes: "This character is generated for demonstration purposes."
+
+# Example of an Item
+item:
+  system_id: "item_002"
+  canonical_id: "amulet001"
+  name: "Mystic Amulet"
+  description: "A magical amulet imbued with protective powers."
+  rarity: "Rare"
+  weight: 0.5
+  value: 500
+
+# Example of an Event
+event:
+  system_id: "event_001"
+  canonical_id: "battle001"
+  name: "The Great Battle"
+  description: "A decisive battle between two great armies."
+  event_type: "Combat"
+  date: "2023-08-10T12:00:00"
+  location: "Battlefield"
+  participants:
+    - "char_001"
+    - "char_002"
+  consequences:
+    - "Victory for Hero"
+  related_items:
+    - "item_001"
+  lasting_effects: "The balance of power shifted in favor of the victorious kingdom."
+
+# Location Example
+location:
+  system_id: "location_001"
+  canonical_id: "village001"
+  name: "Quiet Village"
+  description: "A peaceful village tucked away in the hills."
+  type: "Village"
+  inhabitants:
+    - "char_001"
+  points_of_interest:
+    - "Old Oak Tree"
+    - "Village Well"
+  government_type: "Council"
+  wealth: 5
+  climate: "Temperate"
+
+# Faction Example
+faction:
+  system_id: "faction_001"
+  canonical_id: "order001"
+  name: "Order of the Phoenix"
+  description: "A secretive organization dedicated to the preservation of ancient knowledge."
+  leader: "char_003"
+  members:
+    - "char_001"
+    - "char_002"
+  goals:
+    - "Recover lost artifacts"
+  resources:
+    - "Ancient Library"
+    - "Magical Artifacts"
+
+# Memory Example
+memory:
+  system_id: "memory_001"
+  canonical_id: "memory001"
+  name: "First Battle"
+  description: "The first time the hero experienced true combat."
+  memory_string: "In the heat of battle, the hero stood strong."
+  associated_entity_id: "char_001"
+  event_id: "event_001"
+  location_id: "location_001"
+  timeline: "2023"
+  timestamp: "2023-08-10T12:00:00"

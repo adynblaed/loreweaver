@@ -1,0 +1,9 @@
+{
+  "AbilityScore": {
+    "__description__": "Represents an ability score with its base value and derived modifier.\n\nAttributes:\n    score (int): Base ability score (1-30).\n    modifier (int): Modifier derived from the ability score.",
+    "score": "<int>",
+    "score__description__": "Base ability score between 1 and 30",
+    "modifier": "<int>",
+    "modifier__description__": "Modifier derived from the ability score"
+  }
+}

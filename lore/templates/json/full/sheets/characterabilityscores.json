@@ -1,0 +1,11 @@
+{
+  "CharacterAbilityScores": {
+    "__description__": "Encapsulates all six primary ability scores for a character.\n\nAttributes:\n    strength (AbilityScore): Strength score and modifier.\n    dexterity (AbilityScore): Dexterity score and modifier.\n    constitution (AbilityScore): Constitution score and modifier.\n    intelligence (AbilityScore): Intelligence score and modifier.\n    wisdom (AbilityScore): Wisdom score and modifier.\n    charisma (AbilityScore): Charisma score and modifier.",
+    "strength": "<AbilityScore>",
+    "dexterity": "<AbilityScore>",
+    "constitution": "<AbilityScore>",
+    "intelligence": "<AbilityScore>",
+    "wisdom": "<AbilityScore>",
+    "charisma": "<AbilityScore>"
+  }
+}

@@ -1,0 +1,8 @@
+LocalizedString:
+  __description__: "Model for localized strings supporting multiple languages.\n\n\
+    Attributes:\n    default (str): Default language string.\n    translations (Dict[str,\
+    \ str]): Translations keyed by language code."
+  default: <str>
+  default__description__: Default language string
+  translations: <dict>
+  translations__description__: Translations keyed by language code

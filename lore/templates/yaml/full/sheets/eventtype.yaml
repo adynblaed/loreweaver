@@ -1,0 +1,12 @@
+EventType:
+  __description__: "Enumeration of event types for world-building and storytelling.\n\
+    \nClassifies the context and significance of occurrences in the world.\n\nAttributes:\n\
+    \    PERSONAL (str): Events of personal significance to characters.\n    HISTORICAL\
+    \ (str): Important events in the world's history.\n    QUEST (str): Events tied\
+    \ to missions or tasks undertaken by characters.\n    COMBAT (str): Battles or\
+    \ conflicts between entities.\n    SOCIAL (str): Social or political gatherings\
+    \ and interactions.\n    ECONOMIC (str): Events related to trade, wealth, or economic\
+    \ shifts.\n    NATURAL (str): Natural occurrences like weather changes or disasters.\n\
+    \    SUPERNATURAL (str): Events involving magic, divine intervention, or unearthly\
+    \ forces.\n    COSMIC (str): Events of a grand scale, affecting the universe or\
+    \ dimensions."

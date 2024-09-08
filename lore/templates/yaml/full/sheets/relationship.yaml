@@ -1,0 +1,16 @@
+Relationship:
+  __description__: "Represents a relationship between two entities.\n\nAttributes:\n\
+    \    source_id (UUID): UUID of the source entity.\n    target_id (UUID): UUID\
+    \ of the target entity.\n    relationship_type (str): Type of relationship (e.g.,\
+    \ Ally, Rival, Family).\n    dynamics (RelationshipDynamic): Dynamic states of\
+    \ the relationship.\n    notes (LocalizedString): Additional notes on the relationship."
+  source_id: <<ast.Attribute object at 0x10ffb55d0>>
+  source_id__description__: UUID of the source entity
+  target_id: <<ast.Attribute object at 0x10ffb50d0>>
+  target_id__description__: UUID of the target entity
+  relationship_type: <str>
+  relationship_type__description__: Type of relationship (e.g., Ally, Rival, Family)
+  dynamics: <RelationshipDynamic>
+  dynamics__description__: Dynamic states of the relationship
+  notes: <Optional[LocalizedString]>
+  notes__description__: Additional notes on the relationship

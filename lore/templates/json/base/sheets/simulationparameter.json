@@ -1,0 +1,8 @@
+{
+  "SimulationParameter": {
+    "name": "<str>",
+    "value": "<Union[<ast.Tuple object at 0x1048fe910>]>",
+    "description": "<LocalizedString>",
+    "range": "<Optional[Dict[<ast.Tuple object at 0x1048ff650>]]>"
+  }
+}

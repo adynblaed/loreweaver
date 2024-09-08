@@ -1,0 +1,6 @@
+VersionedEntityMixin:
+  version: <int>
+  created_at: '<default_factory: utcnow>'
+  updated_at: '<default_factory: utcnow>'
+  change_log: '<default_factory: list>'
+  version_history: '<default_factory: list>'

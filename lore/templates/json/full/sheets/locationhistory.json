@@ -1,0 +1,11 @@
+{
+  "LocationHistory": {
+    "__description__": "Represents the historical changes of a location over time.\n\nAttributes:\n    key_events (List[UUID]): UUIDs of significant events in the location's history.\n    previous_names (List[LocalizedString]): Previous names of the location.\n    major_changes (List[LocalizedString]): Major changes the location has undergone.",
+    "key_events": "<list>",
+    "key_events__description__": "UUIDs of significant events in the location's history",
+    "previous_names": "<list>",
+    "previous_names__description__": "Previous names of the location",
+    "major_changes": "<list>",
+    "major_changes__description__": "Major changes the location has undergone"
+  }
+}
